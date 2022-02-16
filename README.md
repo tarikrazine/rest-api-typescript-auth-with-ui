@@ -1,1 +1,1 @@
-##Rest api express typescript auth with ui next.js
+## Rest api express typescript auth / google auth with ui
