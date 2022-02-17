@@ -10,6 +10,7 @@ import { Input, Spacer, Button, Loading, Link as LinkComponent } from '@nextui-o
 
 import { LoginUserInput, loginUserSchema } from '../../../utils/loginSchema'
 import sending from '../../../utils/sending'
+import getGoogleUrl from '../../../utils/getGoogleUrl'
 
 interface LoginResponse {
     response?: any
@@ -114,6 +115,15 @@ const Login: NextPage = () => {
                     }
                 </Button>
             </form>
+            <Spacer y={2.5} />
+            <Button
+                size="xl"
+                shadow
+                color='primary'
+                onClick={() => route.push(getGoogleUrl())}
+            >
+                Login using Google
+            </Button>
         </>
     )
 }

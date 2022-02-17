@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+
+import Link from 'next/link'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
@@ -7,8 +10,7 @@ import { Input, Spacer, Button, Loading, Link as LinkComponent } from '@nextui-o
 
 import { RegisterUserInput, registerUserSchema } from '../../../utils/registerSchema'
 import sending from '../../../utils/sending'
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
+import getGoogleUrl from '../../../utils/getGoogleUrl'
 
 interface RegisterResponse {
     data: {
@@ -144,6 +146,15 @@ const Register: NextPage = () => {
                     }
                 </Button>
             </form>
+            <Spacer y={2.5} />
+            <Button
+                size="xl"
+                shadow
+                color='primary'
+                onClick={() => route.push(getGoogleUrl())}
+            >
+                Register using Google
+            </Button>
         </>
     )
 }

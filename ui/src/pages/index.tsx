@@ -1,9 +1,10 @@
-import { Button } from '@nextui-org/react';
-import axios from 'axios';
 import type { GetServerSideProps, NextPage } from 'next'
 import { useRouter } from 'next/router';
 import Head from 'next/head'
+import Image from 'next/image';
 
+import { Avatar, Button, Spacer } from '@nextui-org/react';
+import axios from 'axios';
 import useSWR from 'swr'
 
 import fetcher from '../utils/fetcher';
@@ -12,6 +13,7 @@ type User = {
   _id: string;
   email: string;
   name: string;
+  picture: string
   createdAt: Date;
   updatedAt: Date;
   __v: number;
@@ -41,6 +43,7 @@ const Home: NextPage<{ fallbackData: User }> = ({ fallbackData }) => {
       console.log(error.response)
     }
   }
+
   if (data?.response?.status === 403) {
     return (
       <>
@@ -64,6 +67,10 @@ const Home: NextPage<{ fallbackData: User }> = ({ fallbackData }) => {
       </Head>
       <h1>Index page</h1>
       <p>Welcome {data?.name}</p>
+      {data?.picture && (
+        <Avatar size="lg" src={`${data?.picture}`} color="primary" bordered squared />
+      )}
+      <Spacer y={2} />
       <Button onClick={logOut}>Logout</Button>
     </>
   )

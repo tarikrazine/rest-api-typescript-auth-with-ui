@@ -7,6 +7,7 @@
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts"
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "bcrypt": "^5.0.1",
     "config": "^3.3.7",
     "cookie-parser": "^1.4.6",
